@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    background-color: #191414;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* 181820 */
+/* 21212b */
