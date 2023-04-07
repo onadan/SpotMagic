@@ -1,21 +1,19 @@
 import { useEffect } from "react";
+import { getUserInfo } from "./api/spotify_api";
+import { requestAccessToken } from "./service/authService";
+
+const urlParams = new URLSearchParams(window.location.search);
+let code = urlParams.get("code");
 
 const Redirect = () => {
+  if (!code) {
+    window.location.href = "/";
+  }
   useEffect(() => {
-    const hash = window.location.hash;
-    let token;
-
-    if (hash && hash) {
-      token = hash
-        .substring(1)
-        .split("&")
-        .find((elem) => elem.startsWith("access_token"))
-        .split("=")[1];
-      window.localStorage.setItem("token", token);
-    }
-  }, []);
-
-  window.location.href = "/";
+    return () => {
+      requestAccessToken(code);
+    };
+  }, [code]);
 };
 
 export default Redirect;
